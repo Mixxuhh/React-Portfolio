@@ -1,0 +1,25 @@
+.header {
+  position: fixed; /* Fixes the header at the top of the viewport */
+  top: 0; /* Ensures the header sticks to the very top */
+  left: 0; /* Aligns the header to the left edge */
+  width: 100%; /* Makes the header span the entire width of the page */
+  z-index: 1000; /* Keeps the header on top of other elements */
+  padding: 15px 0 15px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  background-color: var(--tertiary);
+  box-shadow: 0 5px 35px rgba(146, 204, 206, 0.4);
+  text-align: center;
+}
+
+.header-title {
+  color: var(--tertiary);
+  background-color: var(--secondary);
+  padding: 5px 1% 5px 6%;
+  margin: 0;
+  font-size: 4vw;
+  line-height: 1;
+}

@@ -1,0 +1,56 @@
+.resume-container {
+  width: auto;
+  height: 100vh;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  flex: 1;
+  margin-top: 40px;
+}
+
+h1,
+h2,
+h3 {
+  color: #333;
+}
+
+.contact-info,
+.skills,
+.experience,
+.education {
+  margin-bottom: 20px;
+}
+
+.contact-info a {
+  color: #007acc;
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+.skills ul,
+.experience ul {
+  padding-left: 20px;
+}
+
+.experience .job-title {
+  font-weight: bold;
+  color: #007acc;
+}
+
+.experience .company-name {
+  font-style: italic;
+  color: #555;
+}
+
+.education .degree {
+  font-weight: bold;
+}
+
+.education .school {
+  color: #555;
+}

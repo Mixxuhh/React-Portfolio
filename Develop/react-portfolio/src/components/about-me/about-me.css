@@ -1,0 +1,6 @@
+.about-me-sec {
+  margin: 0 auto; /* Centers the section */
+  padding: 20px; /* Adds spacing */
+  max-width: 800px; /* Optional: Limits the width for readability */
+  margin-top: 40px;
+}
