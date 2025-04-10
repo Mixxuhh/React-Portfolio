@@ -7,6 +7,7 @@ import Footer from "./components/footer/footer";
 import Contact from "./components/contact/contact";
 import AboutMe from "./components/about-me/about-me";
 import Resume from "./components/resume/resume";
+import "./components/portfolio/portfolio.css";
 
 // Header Component
 <Header></Header>;
@@ -55,17 +56,19 @@ const Portfolio = () => (
 // App Component
 const App = () => (
   <Router>
-    <Header />
-    <main>
-      <Routes>
-        <Route path="/" element={<AboutMe />} />
-        <Route path="/about" element={<AboutMe />} />
-        <Route path="/portfolio" element={<Portfolio />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/resume" element={<Resume />} />
-      </Routes>
-    </main>
-    <Footer />
+    <div className="app-container">
+      <Header />
+      <main>
+        <Routes>
+          <Route path="/" element={<AboutMe />} />
+          <Route path="/about" element={<AboutMe />} />
+          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/resume" element={<Resume />} />
+        </Routes>
+      </main>
+      <Footer />
+    </div>
   </Router>
 );
 

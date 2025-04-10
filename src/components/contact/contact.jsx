@@ -1,117 +1,160 @@
-import { useState } from "react";
-import React from "react";
+import React, { useState } from "react";
 import "./contact.css";
-
-// Contact Component
-// const Contact = () => (
-//   <section className="contact-section">
-//     <h2 className="contact-header">Contact Me</h2>
-//     <form className="contact-form">
-//       <label className="name-box">
-//         Name:
-//         <input type="text" name="name" required />
-//       </label>
-//       <label className="email-box">
-//         Email:
-//         <input type="email" name="email" required />
-//       </label>
-//       <label className="message-box">
-//         Message:
-//         <textarea name="message" required></textarea>
-//       </label>
-//       <button className="submit-button" type="submit">
-//         Submit
-//       </button>
-//     </form>
-//   </section>
-// );
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    subject: "",
     message: "",
   });
 
-  const [errors, setErrors] = useState({
-    email: "",
-    message: "",
+  const [status, setStatus] = useState({
+    submitted: false,
+    submitting: false,
+    error: null,
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-    setErrors({ ...errors, [name]: "" }); // Clear errors on input
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
-  const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setStatus({ submitted: false, submitting: true, error: null });
 
-    const newErrors = {};
-
-    if (!validateEmail(formData.email)) {
-      newErrors.email = "Please enter a valid email address.";
+    try {
+      // Here you would typically send the form data to your backend
+      // For now, we'll just simulate a successful submission
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      setStatus({
+        submitted: true,
+        submitting: false,
+        error: null,
+      });
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+    } catch (error) {
+      setStatus({
+        submitted: false,
+        submitting: false,
+        error: "There was an error submitting the form. Please try again.",
+      });
     }
-
-    if (!formData.message.trim()) {
-      newErrors.message = "Message cannot be empty.";
-    }
-
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-      return;
-    }
-
-    // Submit logic here (e.g., send data to an API or server)
-    alert("Form submitted successfully!");
-    setFormData({ name: "", email: "", message: "" }); // Reset form
   };
 
   return (
-    <section className="contact-section">
-      <h2 className="contact-header">Contact Me</h2>
-      <form className="contact-form" onSubmit={handleSubmit}>
-        <label>
-          Name:
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Email:
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            className={errors.email ? "input-error" : ""}
-          />
-          {errors.email && <span className="error-text">{errors.email}</span>}
-        </label>
-        <label>
-          Message:
-          <textarea
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            className={errors.message ? "input-error" : ""}
-          ></textarea>
-          {errors.message && (
-            <span className="error-text">{errors.message}</span>
-          )}
-        </label>
-        <button className="submit-button" type="submit">
-          Submit
-        </button>
-      </form>
+    <section className="contact">
+      <div className="contact-content">
+        <h2>Get In Touch</h2>
+        <p className="contact-intro">
+          I'm always open to discussing new projects, creative ideas or
+          opportunities to be part of your visions.
+        </p>
+
+        <div className="contact-container">
+          <div className="contact-info">
+            <div className="contact-method">
+              <h3>Email</h3>
+              <p>wwcrase@gmail.com</p>
+            </div>
+            <div className="contact-method">
+              <h3>Location</h3>
+              <p>Salt Lake City, USA</p>
+            </div>
+            <div className="social-links">
+              <a
+                href="https://github.com/mixxuhh"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub
+              </a>
+              <a
+                href="https://linkedin.com/in/yourusername"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                LinkedIn
+              </a>
+            </div>
+          </div>
+
+          <form className="contact-form" onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="name">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="subject">Subject</label>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                value={formData.subject}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                required
+                rows="5"
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="submit-btn"
+              disabled={status.submitting}
+            >
+              {status.submitting ? "Sending..." : "Send Message"}
+            </button>
+
+            {status.submitted && (
+              <p className="success-message">
+                Thank you for your message! I'll get back to you soon.
+              </p>
+            )}
+
+            {status.error && <p className="error-message">{status.error}</p>}
+          </form>
+        </div>
+      </div>
     </section>
   );
 };

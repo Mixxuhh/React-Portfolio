@@ -17,96 +17,114 @@ import "./resume.css";
 // );
 
 const Resume = () => {
+  const experiences = [
+    {
+      title: "Full Stack Web Developer",
+      company: "Company Name",
+      period: "January 2023 - Present",
+      description: [
+        "Developed and maintained web applications using React, Node.js, and MongoDB",
+        "Implemented responsive designs and ensured cross-browser compatibility",
+        "Collaborated with team members using Git and Agile methodologies",
+      ],
+    },
+    {
+      title: "Junior Web Developer",
+      company: "Previous Company",
+      period: "June 2022 - December 2022",
+      description: [
+        "Assisted in developing front-end features using React and JavaScript",
+        "Created and maintained documentation for web applications",
+        "Participated in code reviews and team meetings",
+      ],
+    },
+  ];
+
+  const education = [
+    {
+      degree: "Bachelor of Science in Computer Science",
+      school: "University Name",
+      period: "2018 - 2022",
+      description:
+        "Relevant coursework: Data Structures, Algorithms, Web Development, Database Systems",
+    },
+  ];
+
+  const skills = {
+    Frontend: ["React", "JavaScript", "HTML5", "CSS3", "Responsive Design"],
+    Backend: ["Node.js", "Express", "MongoDB", "SQL", "RESTful APIs"],
+    "Tools & Others": [
+      "Git",
+      "VS Code",
+      "Agile",
+      "Problem Solving",
+      "Team Collaboration",
+    ],
+  };
+
   return (
-    <div className="resume-container">
-      <header>
-        <h1>John Doe</h1>
-        <p>
-          <strong>Front-End Developer</strong>
-        </p>
-      </header>
+    <section className="resume">
+      <div className="resume-content">
+        <h2>Resume</h2>
 
-      <section className="contact-info">
-        <p>
-          <a href="mailto:johndoe@example.com">johndoe@example.com</a> | (123)
-          456-7890 |{" "}
-          <a
-            href="https://linkedin.com/in/johndoe"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            LinkedIn
-          </a>{" "}
-          |{" "}
-          <a
-            href="https://github.com/johndoe"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GitHub
-          </a>
-        </p>
-      </section>
-
-      <section className="summary">
-        <h2>Summary</h2>
-        <p>
-          Detail-oriented front-end developer with 3+ years of experience
-          designing and building responsive web applications using HTML, CSS,
-          JavaScript, TypeScript, and React. Passionate about creating seamless
-          user experiences and staying up-to-date with modern web development
-          practices.
-        </p>
-      </section>
-
-      <section className="skills">
-        <h2>Skills</h2>
-        <ul>
-          <li>
-            <strong>Languages:</strong> HTML, CSS, JavaScript (ES6+), TypeScript
-          </li>
-          <li>
-            <strong>Libraries & Frameworks:</strong> React, Redux, Tailwind CSS,
-            Bootstrap
-          </li>
-          <li>
-            <strong>Tools:</strong> Git, Webpack, Vite, Figma, Jest, ESLint
-          </li>
-          <li>
-            <strong>Other:</strong> Responsive Design, Agile Methodologies, REST
-            APIs
-          </li>
-        </ul>
-      </section>
-
-      <section className="experience">
-        <h2>Experience</h2>
-        <div>
-          <p className="job-title">Front-End Developer</p>
-          <p className="company-name">
-            Tech Solutions Inc. — January 2022 - Present
-          </p>
-          <ul>
-            <li>
-              Designed and implemented responsive web applications using React,
-              ensuring cross-browser compatibility and accessibility.
-            </li>
-            <li>
-              Migrated legacy codebases from JavaScript to TypeScript, improving
-              maintainability and type safety.
-            </li>
-            <li>
-              Collaborated with designers and back-end developers to deliver
-              seamless user experiences.
-            </li>
-            <li>
-              Optimized application performance, reducing load times by 20%
-              using code-splitting and lazy loading.
-            </li>
-          </ul>
+        <div className="resume-section">
+          <h3>Experience</h3>
+          {experiences.map((exp, index) => (
+            <div key={index} className="experience-item">
+              <div className="experience-header">
+                <h4>{exp.title}</h4>
+                <span className="company">{exp.company}</span>
+                <span className="period">{exp.period}</span>
+              </div>
+              <ul>
+                {exp.description.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
-      </section>
-    </div>
+
+        <div className="resume-section">
+          <h3>Education</h3>
+          {education.map((edu, index) => (
+            <div key={index} className="education-item">
+              <h4>{edu.degree}</h4>
+              <span className="school">{edu.school}</span>
+              <span className="period">{edu.period}</span>
+              <p>{edu.description}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="resume-section">
+          <h3>Skills</h3>
+          <div className="skills-grid">
+            {Object.entries(skills).map(([category, skillList]) => (
+              <div key={category} className="skill-category">
+                <h4>{category}</h4>
+                <ul>
+                  {skillList.map((skill, index) => (
+                    <li key={index}>{skill}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="resume-actions">
+          <a
+            href="/path-to-your-resume.pdf"
+            className="download-btn"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Download Resume
+          </a>
+        </div>
+      </div>
+    </section>
   );
 };
 
