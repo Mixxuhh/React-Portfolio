@@ -27,7 +27,7 @@ const Footer = () => {
       <div className="footer-content">
         <div className="footer-social">
           <a
-            href="https://github.com/yourusername"
+            href="https://github.com/Mixxuhh"
             target="_blank"
             rel="noopener noreferrer"
             className="social-link"
@@ -35,7 +35,7 @@ const Footer = () => {
             GitHub
           </a>
           <a
-            href="https://linkedin.com/in/yourusername"
+            href="https://www.linkedin.com/in/wilsoncrase/"
             target="_blank"
             rel="noopener noreferrer"
             className="social-link"

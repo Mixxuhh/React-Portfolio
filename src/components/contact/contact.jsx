@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import emailjs from "@emailjs/browser";
 import "./contact.css";
 
 const Contact = () => {
+  const form = useRef();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -28,21 +30,31 @@ const Contact = () => {
     setStatus({ submitted: false, submitting: true, error: null });
 
     try {
-      // Here you would typically send the form data to your backend
-      // For now, we'll just simulate a successful submission
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      setStatus({
-        submitted: true,
-        submitting: false,
-        error: null,
-      });
-      setFormData({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-      });
+      // Replace these with your actual EmailJS credentials
+      const result = await emailjs.sendForm(
+        "service_lr660ld", // Replace with your EmailJS service ID
+        "template_4iqizev", // Replace with your EmailJS template ID
+        form.current,
+        "7pVSF0QJUOJazsqsC" // Replace with your EmailJS public key
+      );
+
+      if (result.text === "OK") {
+        setStatus({
+          submitted: true,
+          submitting: false,
+          error: null,
+        });
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+      } else {
+        throw new Error("Failed to send email");
+      }
     } catch (error) {
+      console.error("Error sending email:", error);
       setStatus({
         submitted: false,
         submitting: false,
@@ -56,8 +68,8 @@ const Contact = () => {
       <div className="contact-content">
         <h2>Get In Touch</h2>
         <p className="contact-intro">
-          I'm always open to discussing new projects, creative ideas or
-          opportunities to be part of your visions.
+          I'm always open to discussing new projects, job opportunities,
+          creative ideas or opportunities to be part of your visions.
         </p>
 
         <div className="contact-container">
@@ -79,7 +91,7 @@ const Contact = () => {
                 GitHub
               </a>
               <a
-                href="https://linkedin.com/in/yourusername"
+                href="https://linkedin.com/in/wilsoncrase"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -88,7 +100,7 @@ const Contact = () => {
             </div>
           </div>
 
-          <form className="contact-form" onSubmit={handleSubmit}>
+          <form className="contact-form" onSubmit={handleSubmit} ref={form}>
             <div className="form-group">
               <label htmlFor="name">Name</label>
               <input

@@ -29,7 +29,7 @@ const Header = () => {
             </li>
             <li>
               <Link to="/portfolio" onClick={() => setIsMenuOpen(false)}>
-                Portfolio
+                Projects
               </Link>
             </li>
             <li>

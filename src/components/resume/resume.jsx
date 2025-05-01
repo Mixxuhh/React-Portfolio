@@ -1,64 +1,69 @@
 import React from "react";
 import "./resume.css";
 
-// Resume Component
-// const Resume = () => (
-//   <section className="resume-section">
-//     <h2>Resume</h2>
-//     <ul>
-//       <li>Proficiency 1</li>
-//       <li>Proficiency 2</li>
-//       <li>Proficiency 3</li>
-//     </ul>
-//     <a href="/resume.pdf" download>
-//       Download My Resume
-//     </a>
-//   </section>
-// );
-
 const Resume = () => {
   const experiences = [
     {
-      title: "Full Stack Web Developer",
-      company: "Company Name",
-      period: "January 2023 - Present",
+      title: "Busser - Server",
+      company: "Solitude Mountian Resort",
+      period: "December 2024 - April 2025",
       description: [
-        "Developed and maintained web applications using React, Node.js, and MongoDB",
-        "Implemented responsive designs and ensured cross-browser compatibility",
-        "Collaborated with team members using Git and Agile methodologies",
+        "Accurately record food and drink orders, relay them promptly to the kitchen and bar, and ensure timely delivery to guests.",
+        "Clean and sanitize tables, chairs, and dining areas, ensuring a comfortable and hygienic environment for guests.",
+        "Greet guests warmly, assist with seating arrangements, and offer recommendations when appropriate.",
       ],
     },
     {
-      title: "Junior Web Developer",
-      company: "Previous Company",
-      period: "June 2022 - December 2022",
+      title: "ATM Technician/ Service Representative",
+      company: "Cash is King",
+      period: "May 2022 - Present",
       description: [
-        "Assisted in developing front-end features using React and JavaScript",
-        "Created and maintained documentation for web applications",
-        "Participated in code reviews and team meetings",
+        "Diagnose and repair ATM machines",
+        "Collaborate with team members to ensure efficient operations",
+        "Troubleshoot and resolve technical issues",
+        "Handle sensitive and confidential information with discretion",
       ],
     },
   ];
 
   const education = [
     {
-      degree: "Bachelor of Science in Computer Science",
-      school: "University Name",
-      period: "2018 - 2022",
+      degree: "Associate of Business ",
+      school: "Salt Lake Community College",
+      period: "2020 - 2022",
       description:
-        "Relevant coursework: Data Structures, Algorithms, Web Development, Database Systems",
+        "Relevant coursework: Business Management, Accounting, Marketing, and more",
+    },
+    {
+      degree: "Full Stack Web Development",
+      school: "University of Utah",
+      period: "10/2024 - 04/2025",
+      description:
+        "Relevant coursework: HTML, CSS, JavaScript, TypeScript, React, Node.js, and more",
     },
   ];
 
   const skills = {
-    Frontend: ["React", "JavaScript", "HTML5", "CSS3", "Responsive Design"],
+    Frontend: [
+      "React",
+      "JavaScript",
+      "TypeScript",
+      "CSS3",
+      "Responsive Design",
+    ],
     Backend: ["Node.js", "Express", "MongoDB", "SQL", "RESTful APIs"],
     "Tools & Others": [
       "Git",
       "VS Code",
-      "Agile",
+      "GitHub",
       "Problem Solving",
       "Team Collaboration",
+    ],
+    "Personal Skills": [
+      "Adaptability",
+      "Communication",
+      "Time Management",
+      "Problem Solving",
     ],
   };
 
@@ -111,17 +116,6 @@ const Resume = () => {
               </div>
             ))}
           </div>
-        </div>
-
-        <div className="resume-actions">
-          <a
-            href="/path-to-your-resume.pdf"
-            className="download-btn"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Download Resume
-          </a>
         </div>
       </div>
     </section>
